@@ -11,8 +11,6 @@ It includes **8 relational tables**, over **150+ rows** of sample data, and **mu
 - Attendance Analysis  
 - Vendor & Finance Analysis  
 
-This project is perfect for building SQL mastery and showcasing your work in a **data analysis / finance portfolio**.
-
 ---
 
 # 🏢 Database Overview
