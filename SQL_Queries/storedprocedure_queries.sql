@@ -44,4 +44,17 @@ end//
 delimiter ;
 call UpdateEmployeeSalary(2, '50000');
 
+-- Create a stored procedure to return the highest paid employee.
+delimiter //
+create procedure HighestPaidEmployee()
+begin
+select concat(e.first_name,' ',e.last_name) as employee_name, s.salary
+from employees e
+join salaries s
+on e.emp_id=s.emp_id
+order by s.salary desc
+limit 1;
+end//
+delimiter ;
+
 
