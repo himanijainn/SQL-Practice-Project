@@ -11,6 +11,8 @@ It includes **8 relational tables**, over **150+ rows** of sample data, and **mu
 - Attendance Analysis  
 - Vendor & Finance Analysis  
 - Stored Procedure
+- Common Table Expressions
+- Triggers
 ---
 
 # 🏢 Database Overview
