@@ -21,3 +21,15 @@ on e.dept_id=d.dept_id
 where d.dept_id = dept_id;
 end//
 delimiter ;
+
+-- Create a stored procedure that inserts a new employee.
+delimiter //
+create procedure AddEmployees(in first_name varchar(25), in last_name varchar(25),
+in dept_id int, in hire_date date, in manager_id int)
+begin 
+insert into employees (first_name, last_name, dept_id, hire_date, manager_id)
+values(first_name, last_name, dept_id, hire_date, manager_id);
+end//
+delimiter ;
+call AddEmployees('Himani','Jain', 2, '2020-03-01', 2);
+
