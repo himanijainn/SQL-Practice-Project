@@ -33,3 +33,15 @@ end//
 delimiter ;
 call AddEmployees('Himani','Jain', 2, '2020-03-01', 2);
 
+-- Create a stored procedure to update an employee’s salary.
+delimiter //
+create procedure UpdateEmployeeSalary(in emp_id int, in salary decimal(10,2))
+begin
+update salaries s
+set s.salary = salary
+where s.emp_id = emp_id;
+end//
+delimiter ;
+call UpdateEmployeeSalary(2, '50000');
+
+
