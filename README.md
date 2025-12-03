@@ -10,7 +10,7 @@ It includes **8 relational tables**, over **150+ rows** of sample data, and **mu
 - Set Operations  
 - Attendance Analysis  
 - Vendor & Finance Analysis  
-
+- Stored Procedure
 ---
 
 # 🏢 Database Overview
