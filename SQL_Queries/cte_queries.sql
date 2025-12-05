@@ -25,3 +25,14 @@ join departments d on d.dept_id=e.dept_id
 join dept_avg da on da.dept_id=e.dept_id
 where s.salary>da.avg_salary;
 
+-- Use a CTE to list employees and their project counts.
+with projects_counts as (
+select emp_id, count(*) as total_projects
+from employee_projects
+group by emp_id)
+select e.emp_id,  concat(e.first_name,' ',e.last_name) as name, pc.total_projects
+from employees e
+join projects_counts pc
+on e.emp_id=pc.emp_id;
+
+
