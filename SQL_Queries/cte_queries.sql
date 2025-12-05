@@ -43,3 +43,12 @@ order by salary desc
 limit 3)
 select * from 3_highest_salary;
 
+-- Use a CTE to calculate total payments to each vendor.
+with payments as 
+(select vendor_id, sum(amount) as amount
+from vendor_payments
+group by vendor_id)
+select v.vendor_name, p.amount
+from vendors v
+join payments p
+on v.vendor_id=p.vendor_id;
