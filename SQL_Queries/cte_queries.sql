@@ -35,4 +35,11 @@ from employees e
 join projects_counts pc
 on e.emp_id=pc.emp_id;
 
+-- Use CTE to find the top 3 highest salaries.
+with 3_highest_salary as (
+select emp_id, salary
+from salaries
+order by salary desc
+limit 3)
+select * from 3_highest_salary;
 
