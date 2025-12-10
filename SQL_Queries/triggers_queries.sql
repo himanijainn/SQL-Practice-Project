@@ -62,3 +62,17 @@ BEGIN
     VALUES(OLD.emp_id, OLD.salary, NEW.salary);
 END$$
 DELIMITER ;
+
+-- Trigger to update bonus table when salary crosses 100k.
+DELIMITER $$
+
+CREATE TRIGGER auto_bonus
+AFTER UPDATE ON salaries
+FOR EACH ROW
+BEGIN
+    IF NEW.salary > 100000 AND OLD.salary <= 100000 THEN
+        INSERT INTO bonuses(emp_id, bonus_amount, bonus_date)
+        VALUES(NEW.emp_id, 10000, CURDATE());
+    END IF;
+END$$
+DELIMITER ;
