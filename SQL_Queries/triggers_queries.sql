@@ -30,3 +30,15 @@ BEGIN
     END IF;
 END$$
 DELIMITER ;
+
+-- Trigger to update employee_projects when an employee is deleted.
+DELIMITER $$
+
+CREATE TRIGGER remove_employee_projects
+AFTER DELETE ON employees
+FOR EACH ROW
+BEGIN
+    DELETE FROM employee_projects
+    WHERE emp_id = OLD.emp_id;
+END$$
+DELIMITER ;
