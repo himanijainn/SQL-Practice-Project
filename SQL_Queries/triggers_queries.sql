@@ -16,3 +16,17 @@ BEGIN
     VALUES(NEW.emp_id, 'INSERT');
 END$$
 DELIMITER ;
+
+-- Trigger to prevent salary from being updated to below 10,000.
+DELIMITER $$
+
+CREATE TRIGGER check_salary_update
+BEFORE UPDATE ON salaries
+FOR EACH ROW
+BEGIN
+    IF NEW.salary < 10000 THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Salary cannot be less than 10,000';
+    END IF;
+END$$
+DELIMITER ;
