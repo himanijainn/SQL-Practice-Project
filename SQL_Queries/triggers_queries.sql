@@ -42,3 +42,23 @@ BEGIN
     WHERE emp_id = OLD.emp_id;
 END$$
 DELIMITER ;
+
+-- Trigger to maintain a salary audit table.
+CREATE TABLE salary_audit (
+    audit_id INT AUTO_INCREMENT PRIMARY KEY,
+    emp_id INT,
+    old_salary DECIMAL(10,2),
+    new_salary DECIMAL(10,2),
+    changed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+DELIMITER $$
+
+CREATE TRIGGER salary_change_audit
+BEFORE UPDATE ON salaries
+FOR EACH ROW
+BEGIN
+    INSERT INTO salary_audit(emp_id, old_salary, new_salary)
+    VALUES(OLD.emp_id, OLD.salary, NEW.salary);
+END$$
+DELIMITER ;
